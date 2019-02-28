@@ -31,10 +31,10 @@ from distutils.core import Extension
 
 doclines = __doc__.splitlines()
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 
 ext = []
-if sys.platform in ('linux2',):
+if sys.platform in ('linux2','linux'):
     ext.append(
         Extension(name='affinity._affinity',
                   sources=['affinity/_affinity.c'])

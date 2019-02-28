@@ -60,7 +60,7 @@ set_process_affinity_mask(PyObject *self, PyObject *args)
   return Py_BuildValue("l", cur_mask);
 }
 
-static PyMethodDef methods[] = {
+static PyMethodDef module_methods[] = {
   {"get_process_affinity_mask", get_process_affinity_mask, METH_VARARGS,
     "get_process_affinity_mask(pid) ->\n\
 Get the process affinity mask of 'pid'.\n\n\
@@ -76,9 +76,16 @@ order to be able to call this."},
   {NULL, NULL},
 };
 
-PyMODINIT_FUNC
-init_affinity(void)
+static struct PyModuleDef _affinity = {
+    PyModuleDef_HEAD_INIT,
+    "_affinity",
+    _affinity__doc__,
+    -1,
+    module_methods
+};
+
+PyMODINIT_FUNC PyInit__affinity(void)
 {
-  Py_InitModule3("_affinity", methods, _affinity__doc__);
+    return PyModule_Create(&_affinity);
 }
 
