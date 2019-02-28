@@ -47,7 +47,7 @@ if sys.platform in ('win32',):
             raise ValueError(e)
 
 elif sys.platform in ('linux2'):
-    from _affinity import set_process_affinity_mask, get_process_affinity_mask
+    from affinity._affinity import set_process_affinity_mask, get_process_affinity_mask
 
 else:
     def set_process_affinity_mask(pid, value):
